@@ -1,0 +1,17 @@
+/* Apply Flexbox to the whole page */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the page takes at least the full viewport height */
+}
+
+/* Main content area */
+.app-content {
+  flex-grow: 1; /* This will make sure the content area takes the available space */
+}
+
+
+/* App.css */
+.section-gap {
+  margin-bottom: 30px; /* Adds a gap between sections */
+}

@@ -1,0 +1,7 @@
+/* index.css */
+@import 'flowbite/dist/flowbite.css';  /* Import Flowbite's CSS first */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
