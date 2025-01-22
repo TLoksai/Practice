@@ -1,49 +1,33 @@
-import React from "react";
-import { Navbar } from "flowbite-react";
-import { useLocation } from "react-router-dom";
+"use client";
+
+import { Button, Navbar, Dropdown } from "flowbite-react";
 
 export function NavbarComponent() {
-  const location = useLocation(); // Get current route
-
-  // Function to open Register page in a new window
-  const openRegisterPage = () => {
-    window.open("/register", "_blank");
-  };
-
-  // Function to open Login page in a new window
-  const openLoginPage = () => {
-    window.open("/login", "_blank");
-  };
-
   return (
     <Navbar fluid rounded>
-      <Navbar.Brand href="/">
+      <Navbar.Brand href="https://flowbite-react.com">
         <img src="src/assets/images.png" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">IISC</span>
       </Navbar.Brand>
       <div className="flex md:order-2 space-x-4">
-        {/* Always render Register and Login buttons */}
-        <button onClick={openRegisterPage} className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-          Register
-        </button>
-        <button onClick={openLoginPage} className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
-          Login
-        </button>
+        <Dropdown label="Account" inline>
+          <Dropdown.Item>
+            <Button className="w-full">Register</Button>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Button className="w-full">Login</Button>
+          </Dropdown.Item>
+        </Dropdown>
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="/" active={location.pathname === "/"}>
+        <Navbar.Link href="#" active>
           Home
         </Navbar.Link>
-        <Navbar.Link href="/about" active={location.pathname === "/about"}>
-          About
-        </Navbar.Link>
-        <Navbar.Link href="/setup-guide" active={location.pathname === "/setup-guide"}>
-          Setup Guide
-        </Navbar.Link>
-        <Navbar.Link href="/contact" active={location.pathname === "/contact"}>
-          Contact
-        </Navbar.Link>
+        <Navbar.Link href="#">About</Navbar.Link>
+        <Navbar.Link href="#">Services</Navbar.Link>
+        <Navbar.Link href="#">Pricing</Navbar.Link>
+        <Navbar.Link href="#">Contact</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );
