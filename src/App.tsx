@@ -1,22 +1,16 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import "./App.css";
 import { Button } from "flowbite-react";
 
-
-
 // Regular components
-import { NavbarComponent } from "./components/NavbarComponent";
-import { Footer1 } from "./components/Footer1";
-import { QA } from "./components/QA";
-import { Caesouel } from "./components/Caesouel";
-import { Draw } from "./Draw";
-import { Pagi } from "./components/Pagi";
-import { Table1 } from "./components/Table1";
-import { Partner } from "./components/Partner";
-
-// Lazy load the Home and About components
-const Home = lazy(() => import("./components/Home"));
-const About = lazy(() => import("./components/About"));
+import { NavbarComponent } from "./Frontend/components/NavbarComponent";
+import { Footer1 } from "./Frontend/components/Footer1";
+import { QA } from "./Frontend/components/QA";
+import { Caesouel } from "./Frontend/components/Caesouel";
+import { Draw } from "./Frontend/components/Draw";
+import { Pagi } from "./Frontend/components/Pagi";
+import { Table1 } from "./Frontend/components/Table1";
+import { Partner } from "./Frontend/components/Partner";
 
 const App: React.FC = () => {
   return (
@@ -62,16 +56,6 @@ const App: React.FC = () => {
           </p>
         </div>
       </div>
-
-      {/* Lazy Loaded Components */}
-      <Suspense fallback={<div>Loading...</div>}>
-        <div className="section-gap">
-          <Home />
-        </div>
-        <div className="section-gap">
-          <About />
-        </div>
-      </Suspense>
 
       {/* Other Components */}
       <div className="section-gap">
