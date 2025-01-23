@@ -10,6 +10,7 @@ import SetupGuide from "./Frontend/Pages/SetupGuide";
 import Contact from "./Frontend/Pages/Contact";
 import Home from "./Frontend/Pages/Home";
 
+
 const App: React.FC = () => {
   return (
     <Router>

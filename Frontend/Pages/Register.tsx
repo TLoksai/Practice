@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Register: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +7,9 @@ const Register: React.FC = () => {
     email: '',
     password: '',
   });
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -15,10 +19,29 @@ const Register: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('User Registered:', formData);
-    // Handle registration logic here (e.g., send data to backend)
+    setErrorMessage('');
+    setSuccessMessage('');
+
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/register', formData);
+      if (response.status === 201) {
+        setSuccessMessage('Registration successful! You can now log in.');
+        setFormData({ username: '', email: '', password: '' }); // Reset form
+      } else {
+        setErrorMessage('Registration failed. Please try again.');
+      }
+    } catch (error: any) {
+      if (error.response && error.response.status === 400) {
+        setErrorMessage('Bad request. Please check your input.');
+      } else if (error.response && error.response.status === 409) {
+        setErrorMessage('User already exists. Please use a different email.');
+      } else {
+        setErrorMessage('An unexpected error occurred. Please try again later.');
+      }
+      console.error('Registration error:', error);
+    }
   };
 
   return (
@@ -69,6 +92,13 @@ const Register: React.FC = () => {
             Register
           </button>
         </form>
+
+        {successMessage && (
+          <p className="mt-4 text-center text-sm text-green-600">{successMessage}</p>
+        )}
+        {errorMessage && (
+          <p className="mt-4 text-center text-sm text-red-600">{errorMessage}</p>
+        )}
       </div>
     </div>
   );

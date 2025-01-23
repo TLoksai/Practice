@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -19,22 +20,21 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:8000/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
+      const response = await axios.post('http://127.0.0.1:8000/contact', formData);
+      if (response.status === 200) {
         setResponseMessage('Thank you for your message. We will get back to you soon.');
+      } else if (response.status === 404) {
+        setResponseMessage('Page not found. Please check the URL and try again.');
       } else {
         setResponseMessage('There was a problem submitting your message. Please try again.');
       }
-    } catch (error) {
-      console.error('Error submitting contact form:', error);
-      setResponseMessage('There was an error submitting your message. Please try again.');
+    } catch (error: any) {
+      if (error.response && error.response.status === 404) {
+        setResponseMessage('Page not found. Please check the URL and try again.');
+      } else {
+        console.error('Error submitting contact form:', error);
+        setResponseMessage('There was an error submitting your message. Please try again.');
+      }
     }
   };
 

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -14,10 +18,28 @@ const Login: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('User Logged In:', formData);
-    // Handle login logic here (e.g., verify credentials)
+    setErrorMessage('');
+    setSuccessMessage('');
+
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/login', formData);
+      if (response.status === 200) {
+        setSuccessMessage('Login successful!');
+      } else {
+        setErrorMessage('Invalid email or password.');
+      }
+    } catch (error: any) {
+      if (error.response && error.response.status === 401) {
+        setErrorMessage('Unauthorized. Please check your credentials.');
+      } else if (error.response && error.response.status === 404) {
+        setErrorMessage('API endpoint not found.');
+      } else {
+        setErrorMessage('An unexpected error occurred. Please try again later.');
+      }
+      console.error('Login error:', error);
+    }
   };
 
   return (
@@ -56,6 +78,13 @@ const Login: React.FC = () => {
             Login
           </button>
         </form>
+
+        {successMessage && (
+          <p className="mt-4 text-center text-sm text-green-600">{successMessage}</p>
+        )}
+        {errorMessage && (
+          <p className="mt-4 text-center text-sm text-red-600">{errorMessage}</p>
+        )}
       </div>
     </div>
   );
