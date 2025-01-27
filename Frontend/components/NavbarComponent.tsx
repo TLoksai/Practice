@@ -44,6 +44,9 @@ export function NavbarComponent() {
         <Navbar.Link href="/contact" active={location.pathname === "/contact"}>
           Contact
         </Navbar.Link>
+        <Navbar.Link href="/dashboard" active={location.pathname === "/dashboard"}> {/* Add Dashboard link */}
+          Dashboard
+        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

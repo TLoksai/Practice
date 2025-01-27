@@ -15,3 +15,35 @@
 .section-gap {
   margin-bottom: 30px; /* Adds a gap between sections */
 }
+
+
+.dashboard-container {
+  padding: 20px;
+}
+
+.dashboard-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart-section,
+.job-section {
+  width: 45%;
+}
+
+.job-list-container {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

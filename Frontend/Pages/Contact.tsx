@@ -20,7 +20,7 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/contact', formData);
+      const response = await axios.post('http://127.0.0.1:8000/docs', formData);
       if (response.status === 200) {
         setResponseMessage('Thank you for your message. We will get back to you soon.');
       } else if (response.status === 404) {
