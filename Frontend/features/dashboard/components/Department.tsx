@@ -43,7 +43,7 @@ const Department: React.FC = () => {
     plugins: {
       legend: {
         position: 'top' as const,
-        align: 'end', // Align legend to the right
+        align: 'end' as const, // Align legend to the right
         labels: {
           usePointStyle: true,
           font: {
@@ -62,7 +62,7 @@ const Department: React.FC = () => {
           text: 'JOBS BY DEPARTMENT',
           font: {
             size: 12,
-            weight: 'bold',
+            weight: 700,
           },
           color: '#555555',
         },
@@ -82,7 +82,7 @@ const Department: React.FC = () => {
           text: 'TARGET',
           font: {
             size: 12,
-            weight: 'bold',
+            weight: 700,
           },
           color: '#555555',
         },

@@ -1,0 +1,162 @@
+/* RecruitmentAndTAT.css */
+
+/* Container */
+.recruitment-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .funnel-section,
+  .tat-section {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section-header {
+    font-weight: 600;
+    font-size: 16px;
+    color: #555555;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .funnel-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .funnel-step {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #333;
+    margin-top: -15px;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+  }
+  
+  .funnel-step.all-applicants {
+    background: #d3d3d3;
+  }
+  
+  .funnel-step.interviews {
+    background: #cccccc;
+  }
+  
+  .funnel-step.offer {
+    background: #b3b3b3;
+  }
+  
+  .funnel-step.hired {
+    background: #999999;
+  }
+  
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .select-dropdown {
+    border: 1px solid #d9d9d9;
+    padding: 5px;
+    font-size: 14px;
+    color: #555555;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .tat-content {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    padding: 20px;
+  }
+  
+  .tat-left {
+    padding-right: 20px;
+  }
+  
+  .tat-right {
+    padding-left: 20px;
+  }
+  
+  .tat-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tat-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .color-bar {
+    width: 6px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .tat-item-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tat-item-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .tat-item-days {
+    font-size: 12px;
+    color: #555;
+  }
+  
+  .divider {
+    background: #d9d9d9;
+    width: 1px;
+    height: 100%;
+  }
+  
+  .tat-experience,
+  .tat-resume-availability {
+    margin-bottom: 20px;
+  }
+  
+  .tat-experience-header,
+  .tat-resume-header {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 10px;
+  }
+  
+  .tat-experience-stats,
+  .tat-resume-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888888;
+  }
+  
+  .tat-progress-bar {
+    position: relative;
+    height: 8px;
+    background: #e0e0e0;
+    margin-top: 10px;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: #007bff;
+  }
+  

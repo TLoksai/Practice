@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { NavbarComponent } from "./Frontend/components/NavbarComponent";
-import { Footer1 } from "./Frontend/components/Footer1";
+import { NavbarComponent } from "./Frontend/shared/components/NavbarComponent";
+import { Footer1 } from "./Frontend/shared/components/Footer";
 import Register from "./Frontend/Pages/Register";
 import Login from "./Frontend/Pages/Login";
 import About from "./Frontend/Pages/About";

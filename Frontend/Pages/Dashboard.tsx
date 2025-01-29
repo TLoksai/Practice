@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import DateRangePicker from "../features/date";
-import Overview from "../features/overview"; // Updated Overview component
-import Resume from "../features/resume";
-import Calendar from "../features/calendar";
-import Department from "../features/Department";
-import CombinedComponent from "../features/CombinedComponent"; // Combining BySource and MyJobs
-import ToDoAndSummary from "../features/ToDoAndSummary";
-import RecruitmentAndTAT from "../features/RecruitmentAndTAT";
+import DateRangePicker from "../features/dashboard/components/date";
+import Overview from "../features/dashboard/components/overview"; // Updated Overview component
+import Resume from "../features/dashboard/components/resume";
+import Calendar from "../features/dashboard/components/calendar";
+import Department from "../features/dashboard/components/Department";
+import CombinedComponent from "../features/dashboard/components/CombinedComponent"; // Combining BySource and MyJobs
+import ToDoAndSummary from "../features/dashboard/components/ToDoAndSummary";
+import RecruitmentAndTAT from "../features/dashboard/components/RecruitmentAndTAT";
 
 const Dashboard = () => {
   const [dateRange, setDateRange] = useState([]);

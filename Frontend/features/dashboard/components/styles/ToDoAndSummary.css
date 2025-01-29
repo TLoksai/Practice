@@ -1,0 +1,128 @@
+/* src/features/todoAndSummary/ToDoAndSummary.css */
+
+/* Grid Layout for the entire component */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Left box smaller, right box larger */
+    gap: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .grid-container {
+      display: block; /* Stack the items on small screens */
+    }
+  }
+  
+  /* To-Do List Section */
+  .todo-list {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .todo-header {
+    font-weight: 600;
+    font-size: 16px;
+    color: #555555;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa; /* Shaded heading */
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .search-input {
+    width: 140px;
+    border: 1px solid #e0e0e0;
+    padding: 5px 30px 5px 10px;
+    font-size: 14px;
+    color: #555555;
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 16px;
+    color: #888888;
+  }
+  
+  .todo-items {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+  }
+  
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+  }
+  
+  .item-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .item-role {
+    font-size: 12px;
+    color: #888888;
+  }
+  
+  .action-button {
+    width: 100px;
+    background: #007bff;
+    border: none;
+    color: #ffffff;
+    padding: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+  }
+  
+  .action-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Opening Summary Section */
+  .summary-section {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .summary-header {
+    font-weight: 600;
+    font-size: 16px;
+    color: #555555;
+    background: #f8f9fa; /* Shaded heading */
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .chart-container {
+    flex-grow: 1;
+    position: relative;
+    padding: 10px;
+  }
+  
