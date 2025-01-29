@@ -1,64 +1,98 @@
-import React from "react";
-import DonutChart from "../components/Charts/DonutChart"; // Import updated DonutChart with JobSearch
-import PieChart from "../components/PieChart"; // Import PieChart for other sections
-import JobList from "../components/JobList"; // Import the JobList component
-import FromTo from "../components/FromTo"; // Import FromTo component
+import React, { useState } from "react";
+import DateRangePicker from "../features/date";
+import Overview from "../features/overview"; // Updated Overview component
+import Resume from "../features/resume";
+import Calendar from "../features/calendar";
+import Department from "../features/Department";
+import CombinedComponent from "../features/CombinedComponent"; // Combining BySource and MyJobs
+import ToDoAndSummary from "../features/ToDoAndSummary";
+import RecruitmentAndTAT from "../features/RecruitmentAndTAT";
 
-const Dashboard: React.FC = () => {
-  // Data for additional pie charts
-  const activeCandidatesData = [
-    ["Status", "Percentage"],
-    ["Employed", 70],
-    ["Unemployed", 30],
-  ];
+const Dashboard = () => {
+  const [dateRange, setDateRange] = useState([]);
+  const [selectedRange, setSelectedRange] = useState("Last 6 Months");
 
-  const allResumesData = [
-    ["Category", "Documents"],
-    ["Available Resume", 150],
-    ["Unavailable Resume", 50],
+  const handleDateChange = (dates) => {
+    setDateRange(dates);
+  };
+
+  const handleRangeChange = (range) => {
+    setSelectedRange(range);
+  };
+
+  const stats = [
+    { label: "Applicants", value: 190 },
+    { label: "No. of Jobs", value: 30 },
+    { label: "Positions", value: 70 },
+    { label: "Positions Left", value: 43 },
+    { label: "Shortlisted", value: 27 },
+    { label: "Interviews", value: 30 },
+    { label: "Offered", value: 15 },
+    { label: "Hired", value: 5 },
+    { label: "Rejected", value: 10 },
+    { label: "Avg time hire", value: "7 (days)" },
   ];
 
   return (
-    <div className="dashboard-container w-full flex flex-col space-y-8 p-4">
-      {/* First Row: FromTo Date Picker */}
-      <div className="w-full p-4 border rounded shadow-md bg-white">
-        <h2 className="text-2xl font-extrabold text-center text-blue-600 mb-6">
-          Select Date Range
-        </h2>
-        <FromTo /> {/* FromTo component for selecting "From" and "To" dates */}
+    <div
+      style={{
+        padding: "20px", // Padding for top and bottom
+        paddingLeft: "5%", // Left gap
+        paddingRight: "5%", // Right gap
+        backgroundColor: "#f4f5f7",
+        minHeight: "100vh",
+      }}
+    >
+      {/* Date Range Picker Section */}
+      <div style={{ marginBottom: "20px" }}>
+        <DateRangePicker onDateChange={handleDateChange} onRangeChange={handleRangeChange} />
       </div>
 
-      {/* Second Row: PieChart */}
-      <div className="w-full p-4 border rounded shadow-md bg-white">
-        <h2 className="text-2xl font-extrabold text-center text-blue-600 mb-6">
-          Resume Availability
-        </h2>
-        <div className="w-full flex justify-between items-start space-x-4">
-          <div className="flex-1 p-4 border rounded shadow-md bg-white">
-            <h3 className="text-lg font-semibold mb-4">Active Candidates</h3>
-            <PieChart data={activeCandidatesData} title="Active Candidates" />
-          </div>
-          <div className="flex-1 p-4 border rounded shadow-md bg-white">
-            <h3 className="text-lg font-semibold mb-4">All Resumes</h3>
-            <PieChart data={allResumesData} title="All Resumes" />
-          </div>
-        </div>
+      {/* Jobs Overview Section */}
+      <div style={{ marginBottom: "20px" }}>
+        <Overview stats={stats} />
       </div>
 
-      {/* Third Row: DonutChart */}
-      <div className="w-full p-4 border rounded shadow-md bg-white">
-        <h2 className="text-2xl font-extrabold text-center text-blue-600 mb-6">
-          Job Search Stats
-        </h2>
-        <DonutChart /> {/* Updated DonutChart with JobSearch */}
+      {/* Availability of Resume Section */}
+      <div style={{ marginBottom: "20px" }}>
+        <Resume />
       </div>
 
-      {/* Fourth Row: Job List */}
-      <div className="w-full p-4 border rounded shadow-md bg-white">
-        <h2 className="text-2xl font-extrabold text-center text-blue-600 mb-6">
-          Job List & Search
-        </h2>
-        <JobList /> {/* Call the JobList component here */}
+      {/* Calendar Section */}
+      <div style={{ marginBottom: "20px" }}>
+        <Calendar />
+      </div>
+
+      {/* Jobs by Department Section */}
+      <div style={{ marginBottom: "20px" }}>
+        <Department />
+      </div>
+
+      {/* Combined By Source and My Jobs Section */}
+      <div
+        style={{
+          marginTop: "20px",
+        }}
+      >
+        <CombinedComponent />
+      </div>
+
+      {/* To Do and Opening Summary Section */}
+      <div
+        style={{
+          marginTop: "20px",
+        }}
+      >
+        <ToDoAndSummary />
+      </div>
+
+      {/* Recruitment Funnel and TAT Section */}
+      <div
+        style={{
+          marginTop: "20px",
+        }}
+      >
+        <RecruitmentAndTAT />
       </div>
     </div>
   );

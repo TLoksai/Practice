@@ -32,21 +32,11 @@ export function NavbarComponent() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="/" active={location.pathname === "/"}>
-          Home
-        </Navbar.Link>
-        <Navbar.Link href="/about" active={location.pathname === "/about"}>
-          About
-        </Navbar.Link>
-        <Navbar.Link href="/setup-guide" active={location.pathname === "/setup-guide"}>
-          Setup Guide
-        </Navbar.Link>
-        <Navbar.Link href="/contact" active={location.pathname === "/contact"}>
-          Contact
-        </Navbar.Link>
-        <Navbar.Link href="/dashboard" active={location.pathname === "/dashboard"}> {/* Add Dashboard link */}
-          Dashboard
-        </Navbar.Link>
+        <Navbar.Link href="/" active={location.pathname === "/"}>Home</Navbar.Link>
+        <Navbar.Link href="/about" active={location.pathname === "/about"}>About</Navbar.Link>
+        <Navbar.Link href="/setup-guide" active={location.pathname === "/setup-guide"}>Setup Guide</Navbar.Link>
+        <Navbar.Link href="/contact" active={location.pathname === "/contact"}>Contact</Navbar.Link>
+        <Navbar.Link href="/dashboard" active={location.pathname === "/dashboard"}>Dashboard</Navbar.Link> {/* New Dashboard Link */}
       </Navbar.Collapse>
     </Navbar>
   );

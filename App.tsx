@@ -9,8 +9,8 @@ import About from "./Frontend/Pages/About";
 import SetupGuide from "./Frontend/Pages/SetupGuide";
 import Contact from "./Frontend/Pages/Contact";
 import Home from "./Frontend/Pages/Home";
-import Dashboard from "./Frontend/Pages/Dashboard";
-import BarChart from "./Frontend/components/Charts/BarChart";  // Import BarChart here
+import Dashboard from "./Frontend/Pages/Dashboard"; // Import Dashboard
+import BarChart from "./Frontend/components/Charts/BarChart"; // Import BarChart here
 import PieChart from "./Frontend/components/PieChart";
 
 const App: React.FC = () => {
@@ -25,7 +25,7 @@ const App: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/setup-guide" element={<SetupGuide />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/dashboard" element={<><Dashboard /><BarChart /></>} /> {/* Displaying BarChart here */}
+          <Route path="/dashboard" element={<Dashboard />} />  {/* Add Dashboard route here */}
         </Routes>
         <Footer1 />
       </div>
