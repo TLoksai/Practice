@@ -101,34 +101,14 @@ const Department: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        background: '#ffffff',
-        border: '1px solid #e0e0e0',
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-        height: '300px',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '0', // Remove unnecessary padding for alignment
-      }}
-    >
+    <div className="bg-white border border-gray-300 shadow-md h-[300px] flex flex-col p-0">
       {/* Header */}
-      <div
-        style={{
-          fontWeight: '600',
-          fontSize: '16px',
-          color: '#555555',
-          backgroundColor: '#f8f9fa', // Shaded header background
-          padding: '10px 15px',
-          borderBottom: '1px solid #d9d9d9',
-          marginTop: '0', // Cover the top gap
-        }}
-      >
+      <div className="font-semibold text-base text-gray-700 bg-gray-100 py-2 px-4 border-b border-gray-300">
         Jobs by Department
       </div>
 
       {/* Chart Section */}
-      <div style={{ flexGrow: 1, position: 'relative', padding: '10px 15px' }}>
+      <div className="flex-grow relative p-4">
         <Bar data={data} options={options} />
       </div>
     </div>

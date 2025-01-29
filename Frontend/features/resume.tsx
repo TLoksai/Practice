@@ -17,8 +17,8 @@ const Resume: React.FC = () => {
     datasets: [
       {
         data: [65, 35],
-        backgroundColor: ['#4caf50', '#f44336'], // Colors for the segments
-        hoverBackgroundColor: ['#45a049', '#e53935'], // Hover colors
+        backgroundColor: ['#4caf50', '#f44336'],
+        hoverBackgroundColor: ['#45a049', '#e53935'],
       },
     ],
   };
@@ -45,7 +45,7 @@ const Resume: React.FC = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'right' as const, // Legend placement
+        position: 'right' as const,
         labels: {
           font: {
             size: 12,
@@ -65,58 +65,20 @@ const Resume: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        background: '#ffffff',
-        border: '1px solid #d9d9d9',
-        padding: '0', // Remove extra padding around the container
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '10px 15px',
-          fontSize: '16px',
-          fontWeight: 600,
-          color: '#555555',
-          backgroundColor: '#f8f9fa', // Light header background
-          borderBottom: '1px solid #d9d9d9',
-        }}
-      >
+    <div className="bg-white border border-gray-300 shadow-sm">
+      <div className="flex justify-between items-center p-3 text-lg font-semibold text-gray-600 bg-gray-100 border-b border-gray-300">
         Availability of Resume
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px 10px' }}>
-        <div style={{ width: '48%' }}>
-          <h4
-            style={{
-              textAlign: 'center',
-              fontSize: '14px',
-              color: '#666',
-              marginBottom: '10px',
-            }}
-          >
-            Active Candidates <br />
-            (CV Received in Last 1 Month)
-          </h4>
-          <div style={{ height: '200px' }}>
+      <div className="flex justify-between p-5 md:flex-col md:items-center md:gap-5">
+        <div className="w-1/2 text-center md:w-11/12">
+          <h4 className="text-sm text-gray-600 mb-2">Active Candidates <br />(CV Received in Last 1 Month)</h4>
+          <div className="h-48">
             <Doughnut data={activeCandidatesData} options={chartOptions} />
           </div>
         </div>
-        <div style={{ width: '48%' }}>
-          <h4
-            style={{
-              textAlign: 'center',
-              fontSize: '14px',
-              color: '#666',
-              marginBottom: '10px',
-            }}
-          >
-            All Resume
-          </h4>
-          <div style={{ height: '200px' }}>
+        <div className="w-1/2 text-center md:w-11/12">
+          <h4 className="text-sm text-gray-600 mb-2">All Resume</h4>
+          <div className="h-48">
             <Doughnut data={allResumeData} options={chartOptions} />
           </div>
         </div>

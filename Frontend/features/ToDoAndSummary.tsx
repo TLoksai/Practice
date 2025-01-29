@@ -66,6 +66,9 @@ const ToDoAndSummary: React.FC = () => {
         display: "grid",
         gridTemplateColumns: "1fr 2fr", // Left box smaller, right box larger
         gap: "10px", // Reduced space between the two boxes
+        "@media (max-width: 768px)": {
+          display: "block", // Stack the items on small screens
+        },
       }}
     >
       {/* To-Do List Section */}
@@ -91,6 +94,9 @@ const ToDoAndSummary: React.FC = () => {
             background: "#f8f9fa", // Shaded heading
             padding: "10px",
             borderBottom: "1px solid #e0e0e0",
+            "@media (max-width: 768px)": {
+              fontSize: "14px", // Smaller font for mobile
+            },
           }}
         >
           <span>To Do</span>
@@ -106,6 +112,9 @@ const ToDoAndSummary: React.FC = () => {
                 padding: "5px 30px 5px 10px",
                 fontSize: "14px",
                 color: "#555555",
+                "@media (max-width: 768px)": {
+                  width: "100%", // Full width input on mobile
+                },
               }}
             />
             <SearchOutlined
@@ -125,6 +134,9 @@ const ToDoAndSummary: React.FC = () => {
             margin: "0",
             overflowY: "auto",
             flexGrow: 1,
+            "@media (max-width: 768px)": {
+              fontSize: "12px", // Smaller text for mobile view
+            },
           }}
         >
           {todoItems.map((item, index) => (
@@ -205,6 +217,9 @@ const ToDoAndSummary: React.FC = () => {
             background: "#f8f9fa", // Shaded heading
             padding: "10px",
             borderBottom: "1px solid #e0e0e0",
+            "@media (max-width: 768px)": {
+              fontSize: "14px", // Smaller font for mobile
+            },
           }}
         >
           Opening Summary

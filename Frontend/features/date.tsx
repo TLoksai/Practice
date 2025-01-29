@@ -3,83 +3,34 @@ import { DatePicker, Select } from "antd";
 
 const { Option } = Select;
 
-interface DateRangePickerProps {
-  onRangeChange: (value: string) => void;
-}
-
-const DateRangePicker: React.FC<DateRangePickerProps> = ({ onRangeChange }) => {
+const DateRangePicker: React.FC = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      {/* From and To Dates */}
-      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <label
-            style={{
-              fontSize: "12px",
-              color: "#555555",
-              fontWeight: "600",
-              marginBottom: "4px",
-            }}
-          >
-            From
-          </label>
+    <div className="flex justify-between items-center py-2 gap-5">
+      {/* From and To Dates Together */}
+      <div className="flex flex-col">
+        <label className="text-xs text-gray-600 font-semibold mb-1">
+          From - To
+        </label>
+        <div className="flex gap-2">
           <DatePicker
-            placeholder="Select Date"
-            style={{
-              width: "140px",
-              height: "36px",
-              borderRadius: "4px",
-            }}
+            placeholder="From"
+            className="w-36 h-9 rounded-md border border-gray-300"
           />
-        </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <label
-            style={{
-              fontSize: "12px",
-              color: "#555555",
-              fontWeight: "600",
-              marginBottom: "4px",
-            }}
-          >
-            To
-          </label>
           <DatePicker
-            placeholder="Select Date"
-            style={{
-              width: "140px",
-              height: "36px",
-              borderRadius: "4px",
-            }}
+            placeholder="To"
+            className="w-36 h-9 rounded-md border border-gray-300"
           />
         </div>
       </div>
 
       {/* Select Range */}
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label
-          style={{
-            fontSize: "12px",
-            color: "#555555",
-            fontWeight: "600",
-            marginBottom: "4px",
-          }}
-        >
+      <div className="flex flex-col">
+        <label className="text-xs text-gray-600 font-semibold mb-1">
           Select Range
         </label>
         <Select
           defaultValue="Last 6 Months"
-          onChange={onRangeChange}
-          style={{
-            width: "200px",
-            height: "36px",
-            borderRadius: "4px",
-          }}
+          className="w-48 h-9 rounded-md border border-gray-300"
         >
           <Option value="Last 6 Months">Last 6 Months</Option>
           <Option value="Last Year">Last Year</Option>
