@@ -10,8 +10,6 @@ import SetupGuide from "./Frontend/Pages/SetupGuide";
 import Contact from "./Frontend/Pages/Contact";
 import Home from "./Frontend/Pages/Home";
 import Dashboard from "./Frontend/Pages/Dashboard"; // Import Dashboard
-import BarChart from "./Frontend/components/Charts/BarChart"; // Import BarChart here
-import PieChart from "./Frontend/components/PieChart";
 
 const App: React.FC = () => {
   return (

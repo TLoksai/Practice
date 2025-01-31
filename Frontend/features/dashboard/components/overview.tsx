@@ -1,10 +1,19 @@
 import React from "react";
 
-interface OverviewProps {
-  stats: { label: string; value: string | number }[];
-}
+const Overview = () => {
+  const stats = [
+    { label: "Applicants", value: 190 },
+    { label: "No. of Jobs", value: 30 },
+    { label: "Positions", value: 70 },
+    { label: "Positions Left", value: 43 },
+    { label: "Shortlisted", value: 27 },
+    { label: "Interviews", value: 30 },
+    { label: "Offered", value: 15 },
+    { label: "Hired", value: 5 },
+    { label: "Rejected", value: 10 },
+    { label: "Avg time hire", value: "7 (days)" },
+  ];
 
-const Overview: React.FC<OverviewProps> = ({ stats }) => {
   return (
     <div className="bg-white border border-gray-300 shadow-sm">
       {/* Header */}
