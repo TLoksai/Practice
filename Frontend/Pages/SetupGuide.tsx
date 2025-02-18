@@ -1,4 +1,5 @@
-import React from 'react';
+
+
 
 const SetupGuide: React.FC = () => {
   return (
@@ -20,8 +21,8 @@ const SetupGuide: React.FC = () => {
             <a
               href="https://nodejs.org"
               target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              rel="noopener noreferrer"  
+              className="text-blue-600 hover:underline"  
             >
               the official Node.js website
             </a>.

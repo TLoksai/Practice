@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Contact: React.FC = () => {
+  // State to manage form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
 
+  // State to handle response messages and submission status
   const [responseMessage, setResponseMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -17,24 +21,33 @@ const Contact: React.FC = () => {
     });
   };
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (isSubmitting) return; // Prevent multiple submissions
+    setIsSubmitting(true);
+    setResponseMessage('');
+
     try {
-      const response = await axios.post('http://172.128.192.1:8000/api/contacts/', formData);
+      const response = await axios.post('http://192.168.249.7:8000/', formData);
+      
       if (response.status === 200) {
-        setResponseMessage('Thank you for your message. We will get back to you soon.');
-      } else if (response.status === 404) {
-        setResponseMessage('Page not found. Please check the URL and try again.');
+        setResponseMessage('✅ Thank you for your message! We will get back to you soon.');
+        setFormData({ name: '', email: '', message: '' }); // Clear the form
       } else {
-        setResponseMessage('There was a problem submitting your message. Please try again.');
+        setResponseMessage('⚠️ Something went wrong. Please try again.');
       }
     } catch (error: any) {
-      if (error.response && error.response.status === 404) {
-        setResponseMessage('Page not found. Please check the URL and try again.');
+      if (error.response) {
+        setResponseMessage(error.response.data.message || '⚠️ Error: Unable to send message.');
+      } else if (error.request) {
+        setResponseMessage('⚠️ No response from server. Please try again later.');
       } else {
-        console.error('Error submitting contact form:', error);
-        setResponseMessage('There was an error submitting your message. Please try again.');
+        setResponseMessage('⚠️ Unexpected error occurred.');
       }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -43,6 +56,8 @@ const Contact: React.FC = () => {
       <div className="max-w-lg w-full bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">Contact Us</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
+          
+          {/* Name Field */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
             <input
@@ -56,6 +71,8 @@ const Contact: React.FC = () => {
               required
             />
           </div>
+
+          {/* Email Field */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -69,6 +86,8 @@ const Contact: React.FC = () => {
               required
             />
           </div>
+
+          {/* Message Field */}
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
             <textarea
@@ -81,13 +100,19 @@ const Contact: React.FC = () => {
               required
             ></textarea>
           </div>
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 px-4 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={isSubmitting}
+            className={`w-full py-3 px-4 rounded-md shadow-md 
+              ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
           >
-            Send Message
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
         </form>
+
+        {/* Response Message */}
         {responseMessage && (
           <p className="mt-4 text-center text-sm text-gray-600">{responseMessage}</p>
         )}

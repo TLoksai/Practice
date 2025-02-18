@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -54,7 +54,7 @@ const Resume: React.FC = () => {
       },
       tooltip: {
         callbacks: {
-          label: (tooltipItem) => {
+          label: (tooltipItem: any) => {
             const label = tooltipItem.label || '';
             const value = tooltipItem.raw || 0;
             return `${label}: ${value}%`;

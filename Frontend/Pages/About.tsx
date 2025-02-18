@@ -1,6 +1,5 @@
-// src/Frontend/Pages/About.tsx
 
-import React from 'react';
+
 
 const About: React.FC = () => {
   return (
